@@ -30,8 +30,11 @@ I setting up a Bridge Adapter Network for both target machine and Attacker machi
 My setup is the following :
 
 Attacker Machine:
+
 <img width="965" height="587" alt="1" src="https://github.com/user-attachments/assets/d8362018-2328-4438-b7b6-813f30898d76" />
+
 Target Machine:
+
 <img width="950" height="587" alt="2" src="https://github.com/user-attachments/assets/47c4ef2e-8909-49f8-867f-02482aa0e81f" />
 
 First let’s run netdiscover on the network to detect the target IPv4 address.
@@ -40,9 +43,30 @@ First let’s run netdiscover on the network to detect the target IPv4 address.
 sudo netdiscover -r 192.168.1.63
 ```
 
-<img width="1920" height="1022" alt="Screenshot_2025-11-08_00_39_23" src="https://github.com/user-attachments/assets/cafb279d-4ceb-4cc7-b43f-db2b98255e5e" />
+<img width="1920" height="1022" alt="1" src="https://github.com/user-attachments/assets/12b58f30-d364-4d68-9ad9-360d3386f2ba" />
 
+And pick the PCS ip
 
 # 2.Reconnaissance
+# Nmap Scan:
+To start with, I fired up an Nmap scan against the target’s IP address. Notably, port 22 (SSH) and port 80 (HTTP) are open. It’s also worth noting that Drupal 7 is running on the web application on port 80.
+```
+nmap 192.168.1.64
+```
+
+<img width="1920" height="1022" alt="2" src="https://github.com/user-attachments/assets/b3801f6e-69e6-41d3-90b5-8b57d78e03a5" />
+
+Scan Another scan with -A (Agressive scan) for more  info
+```
+nmap -A 192.168.1.64
+```
+
+<img width="1920" height="1022" alt="3" src="https://github.com/user-attachments/assets/f0cb490d-b0c2-415e-bdc6-d81be8f4930f" />
+
+# Web Enumeration
+Upon accessing the web application, I was presented with a landing page. Notably, there was an advisory on the home page mentioning potential disruptions to the site while resolving a few outstanding issues. This could imply possible security misconfigurations that could be exploited.
+
+<img width="1920" height="1022" alt="4" src="https://github.com/user-attachments/assets/32f4ec65-3dd2-48de-aa48-4b83f4e4e899" />
+
 
 
