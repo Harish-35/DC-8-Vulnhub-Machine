@@ -11,6 +11,10 @@ Hey! Harish here, I’ll take you through the steps I took to root the DC-8 vuln
 
 # Table of Contents
 1.Reconnaissance
+
 2.Exploitation
+
 3.Privilege Escalation
+
 4.Conclusion
+
