@@ -10,17 +10,17 @@ You probably wouldn’t even know that two-factor authentication was installed a
 Hey! Harish here, I’ll take you through the steps I took to root the DC-8 vulnerable lab. This lab presented unique challenges. We’ll start with reconnaissance, sql injection vulnerability discovery, exploiting a form that allows php code, and finally exploiting exim4 to achieve privilege escalation to root access. Let’s dive in!
 
 # Table of Contents
-- [1.Getting started (Setup)](#1.Getting-started-setup)
+- [Getting started (Setup)](#1.Getting-started-setup)
 
-- [2.Reconnaissance](#2.Reconnaissance)
+- [Reconnaissance](#2.Reconnaissance)
 
-- [3.Exploitation](#3.Exploitation)
+- [Exploitation](#3.Exploitation)
 
-- [4.Privilege Escalation](#4.Privilege-Escalation)
+- [Privilege Escalation](#4.Privilege-Escalation)
 
-- [5.Conclusion](#5.Conclusion)
+- [Conclusion](#5.Conclusion)
 
-# 1.Getting started (Setup)
+## 1.Getting started (Setup)
 As always we start by setting up the working environement and the network.
 
 First we have to download the required machine "https://download.vulnhub.com/dc/DC-8.zip"
@@ -53,7 +53,7 @@ sudo netdiscover -r 192.168.1.63
 
 And pick the PCS ip
 
-# 2.Reconnaissance
+## 2.Reconnaissance
 # Nmap Scan:
 To start with, I fired up an Nmap scan against the target’s IP address. Notably, port 22 (SSH) and port 80 (HTTP) are open. It’s also worth noting that Drupal 7 is running on the web application on port 80.
 ```
@@ -82,7 +82,7 @@ After trying each options in the site, i see some different response and found t
 
 <img width="1920" height="1022" alt="5" src="https://github.com/user-attachments/assets/cad4357e-142a-498e-9129-4d4c8649fe42" />
 
-# 3.Exploitation
+## 3.Exploitation
 
 # SQLMap
 
@@ -160,7 +160,7 @@ nc -lvnp 8886
 
 <img width="1920" height="1022" alt="20" src="https://github.com/user-attachments/assets/9b783f91-52c1-46c2-b20e-ccfdd99d367e" />
 
-# 4.Privilege Escalation
+## 4.Privilege Escalation
 With the listener set up, I filled out the Contact Us form with arbitrary data. Upon submission, the page stalled—a good sign that my payload was executing. The listener picked up the connection, providing me a foothold on the system.
 
 <img width="1920" height="1022" alt="22" src="https://github.com/user-attachments/assets/f95cee45-f033-444b-a5f2-e16d2394919c" />
@@ -242,7 +242,7 @@ cat flag.txt
 
 <img width="1920" height="1022" alt="39" src="https://github.com/user-attachments/assets/d09eab21-111e-4182-b00b-9598c7a8e4f1" />
 
-# 5.Conclusion
+## 5.Conclusion
 
 DC-8 presented a unique challenge by demanding a mix of traditional web exploitation, SQL injection, and brute-force password cracking, leading to an initial foothold. The use of Drupal’s webform allowed for a crafty privilege escalation via PHP code injection, ultimately opening a reverse shell. Exploiting the misconfigured Exim4 service further elevated the privileges to root.
 
