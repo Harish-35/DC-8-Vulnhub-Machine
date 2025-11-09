@@ -68,5 +68,77 @@ Upon accessing the web application, I was presented with a landing page. Notably
 
 <img width="1920" height="1022" alt="4" src="https://github.com/user-attachments/assets/32f4ec65-3dd2-48de-aa48-4b83f4e4e899" />
 
+After trying each options in the site, i see some different response and found the chance for try the "SQLi" in URL.
+
+<img width="1920" height="1022" alt="5" src="https://github.com/user-attachments/assets/cad4357e-142a-498e-9129-4d4c8649fe42" />
+
+# 3.Exploitation
+
+# SQLMap
+
+So i try the "SQL injection" using "sqlmap tool". Using command
+```
+sudo sqlmap -u http://192.168.1.64/?nid=1 --dbs --batch --risk 3 --level 5
+```
+And we find some Databases
+
+<img width="1920" height="1022" alt="6" src="https://github.com/user-attachments/assets/ec6641e2-6e34-4dab-838c-9520608c6a20" />
+
+Using the "d7db" Db for next step
+```
+sudo sqlmap -u http://192.168.1.64/?nid=1 -D d7db  --tables --batch --risk 3 --level 5
+```
+
+<img width="1920" height="1022" alt="8" src="https://github.com/user-attachments/assets/7971a9d1-a1a6-4edc-b78a-bb93d87d161d" />
+
+And get lot of tables, i pick the "users" table.
+
+```
+sudo sqlmap -u http://192.168.1.64/?nid=1 -D d7db  -T users --batch --risk 3 --level 5
+```
+
+<img width="1920" height="1022" alt="9" src="https://github.com/user-attachments/assets/1680187b-eead-428b-8a4f-12ce1ec4fad2" />
+
+Finally, I dumped the users table, revealing two user credentials, including names, email addresses, and password hashes.
+
+<img width="1920" height="1022" alt="10" src="https://github.com/user-attachments/assets/27a72961-41ca-4c03-9502-e63374d21b49" />
+
+# Cracking the Hashes
+I saved the hashes in a text file called john.txt.
+Use the "John The Ripper" tool for crack the password.
+
+<img width="1920" height="1022" alt="11" src="https://github.com/user-attachments/assets/21e930cf-383c-4c9e-bc9f-73bc52c46fc2" />
+
+Using John’s credentials, I logged in to the web application.
+
+<img width="1920" height="1022" alt="12" src="https://github.com/user-attachments/assets/fe63b02f-d544-49fe-b224-ad7eec853f01" />
+
+# Exploiting the Webform for Remote Code Execution
+After logging in, I revisited the “Contact Us” page and found a Webform tab. I modified the form’s confirmation message to include a PHP reverse shell code, which would execute upon form submission.
+
+<img width="1920" height="1022" alt="14" src="https://github.com/user-attachments/assets/26018860-71dd-4b14-af93-843f08d5d2d6" />
+
+<img width="1920" height="1022" alt="15" src="https://github.com/user-attachments/assets/8b5be1a3-5796-475f-9f03-228a8fea1c87" />
+
+After i copy PHP reverse shell code from github, paste it into input field and change the text format to PHP code.
+
+<img width="1920" height="1022" alt="18" src="https://github.com/user-attachments/assets/df43c67f-4145-4c02-8fdf-0f328d0169b6" />
+
+Now change the ip=192.168.1.63(Attacker ip) and port= 8889 in the PHP code.
+
+<img width="1920" height="1022" alt="19" src="https://github.com/user-attachments/assets/10e0f2a5-b125-4345-9185-f1de037d8ba7" />
+
+I then set up a Netcat listener on my machine to catch the reverse shell connection.
+
+```
+nc -lvnp 8886
+```
+
+<img width="1920" height="1022" alt="20" src="https://github.com/user-attachments/assets/9b783f91-52c1-46c2-b20e-ccfdd99d367e" />
+
+# 4.Privilege Escalation
+With the listener set up, I filled out the Contact Us form with arbitrary data. Upon submission, the page stalled—a good sign that my payload was executing. The listener picked up the connection, providing me a foothold on the system.
+
+
 
 
