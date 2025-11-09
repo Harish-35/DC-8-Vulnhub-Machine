@@ -25,7 +25,7 @@ This README intentionally avoids giving away explicit exploit details or final f
 
 ## Objectives
 - Perform network and service enumeration to discover attack surface.
-- Identify and exploit application-level vulnerabilities (web, authentication, file handling, etc.).
+- Identify and exploit application-level vulnerabilities (web, authentication, file handling, etc.). 
 - Obtain an initial foothold (user-level shell).
 - Escalate privileges to obtain root-level access.
 
