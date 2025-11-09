@@ -21,6 +21,18 @@ Hey! Harish here, I’ll take you through the steps I took to root the DC-8 vuln
 - [Conclusion](#Conclusion)
 
 # 1.Getting started (Setup)
+As always we start by setting up the working environement and the network.
+
+First we have to download the required machine "https://download.vulnhub.com/dc/DC-8.zip"
+
+I setting up a Bridge Adapter Network for both target machine and Attacker machine.
+
+My setup is the following :
+
+<img width="965" height="587" alt="1" src="https://github.com/user-attachments/assets/d8362018-2328-4438-b7b6-813f30898d76" />
+
+<img width="950" height="587" alt="2" src="https://github.com/user-attachments/assets/47c4ef2e-8909-49f8-867f-02482aa0e81f" />
+
 
 
 
