@@ -13,10 +13,10 @@ Welcome to the DC-8 VulnHub machine repository. This repository contains documen
 - [Recommended tools](#recommended-tools)
 - [Approach & Enumeration (high-level)](#approach--enumeration-high-level)
 - [Hints (if you get stuck)](#hints-if-you-get-stuck)
-- [What you will find (non-spoiler)]
-- [Mitigations & Fixes]
-- [Contributing]
-- [License]
+- [What you will find (non-spoiler)](#What-you-will-find-non-spoiler)
+- [Mitigations & Fixes](#Mitigations & Fixes)
+- [Contributing](#Contributing)
+- [License](#License)
 
 ## Overview
 DC-8 is an intentionally vulnerable virtual machine intended for educational purposes. It contains a mix of common misconfigurations and application-level vulnerabilities designed to teach enumeration, web application testing, credential discovery, and privilege escalation techniques.
