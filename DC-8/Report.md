@@ -10,15 +10,15 @@ You probably wouldn’t even know that two-factor authentication was installed a
 Hey! Harish here, I’ll take you through the steps I took to root the DC-8 vulnerable lab. This lab presented unique challenges. We’ll start with reconnaissance, sql injection vulnerability discovery, exploiting a form that allows php code, and finally exploiting exim4 to achieve privilege escalation to root access. Let’s dive in!
 
 # Table of Contents
-[1.Setup](#1-Setup)
+- [1.Setup](#1-Setup)
 
-[2.Reconnaissance](#2.Reconnaissance)
+- [2.Reconnaissance](#2.Reconnaissance)
 
-[3.Exploitation](#3.Exploitation)
+- [3.Exploitation](#3.Exploitation)
 
-[4.Privilege Escalation](#4.Privilege Escalation)
+- [4.Privilege Escalation](#4.Privilege-Escalation)
 
-[5.Conclusion](#5.Conclusion)
+- [5.Conclusion](#5.Conclusion)
 
 # 1.Setup
 
